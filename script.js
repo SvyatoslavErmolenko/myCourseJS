@@ -5,4 +5,5 @@ const rollback = "";
 const fullPrice = "";
 const adaptive = "";
 
-alert("hello world");
+alert("Hello world");
+console.log("Hello world");
