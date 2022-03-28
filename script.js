@@ -2,7 +2,7 @@ const title = "lesson02";
 console.log(typeof title); // вывод в консоль тип данных
 const screens = "Simple, Complex, Interactive";
 console.log(screens.length); // вывод в консоль длину строки
-console.log(screens.toLocaleLowerCase().split(" ")); // приводит строку к нижнему регистру и разбивает строку на массив
+console.log(screens.toLocaleLowerCase().split(", ")); // приводит строку к нижнему регистру и разбивает строку на массив
 const screensPrice = 182;
 console.log("\t The cost of layout screens in RUB:", screensPrice, "\n\t The cost of layout screens in USD:", screensPrice,
     "\n\t The cost of layout screens in UAH:", screensPrice, "\n\t The cost of layout screens in CNY:", screensPrice); // выводит в консоль стоимость верстки: рублей, долларов, гривен, юани
