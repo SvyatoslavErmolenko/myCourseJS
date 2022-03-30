@@ -16,29 +16,40 @@ let adaptive = true;
 console.log(typeof adaptive); // вывод в консоль тип данных
 console.log(fullPrice * (rollback / 100)); // процент отката посреднику
 
-//lesson03
+// lesson03
+// Спрашиваеn у пользователя о название его проекта
 title = prompt("Как называется ваш проект?", "Напишите название вашего проекта!");
-console.log(title);
-
+// Спрашивает у пользователя о типах экранов
 screens = prompt("Какие типы экранов нужно разработать?", "Простой, сложный или интерактивный!");
-console.log(screens);
-
+// Спрашивает у пользователя о цене даннай работы
 screensPrice = prompt("Сколько будет стоить данная работа?", "Укажите цену!");
-console.log(screensPrice);
-
+// Спрашивает у пользователя о адаптивности его сайта
 adaptive = confirm("Нужен ли адаптив на сайте?");
-console.log(adaptive);
-
+// Спрашивает у пользователя по 2 раза каждый вопрос и записывает ответы в разные переменные
 let service1 = "";
 service1 = prompt("Какой дополнительный тип услуги нужен?", "Назваие!");
 let servicePrice1 = 1;
 servicePrice1 = prompt("Сколько это будет стоить?", "Стоимость!");
-console.log(service1, servicePrice1);
 let service2 = "";
 service2 = prompt("Какой дополнительный тип услуги нужен?", "Назваие!");
 let servicePrice2 = 2;
 servicePrice2 = prompt("Сколько это будет стоить?", "Стоимость!");
-console.log(service2, servicePrice2);
-
-//fullPrice = ;
-//console.log(fullPrice);
+// вычисление итоговой стоимости работы учитывая стоимость верстки экранов и доп. услуг
+fullPrice = (+screensPrice + +servicePrice1 + +servicePrice2);
+// итоговая стоимость за вычетом отката посреднику и округление в большую сторону
+let servicePercentPrice = (fullPrice - (fullPrice * (rollback / 100)));
+console.log(Math.ceil(servicePercentPrice));
+// конструкцию условий 
+switch (true) {
+    case fullPrice > 30000:
+        console.log("Даем скидку в 10%");
+        break
+    case 15000 <= fullPrice && fullPrice <= 30000:
+        console.log("Даем скидку в 5%");
+        break
+    case 15000 >= fullPrice && fullPrice >= 0:
+        console.log("Скидка не предусмотрена");
+        break
+    default:
+        console.log("Что то пошло не так");
+}
