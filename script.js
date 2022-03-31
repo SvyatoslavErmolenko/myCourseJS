@@ -54,3 +54,17 @@ switch (true) {
         console.log("Что то пошло не так");
 
 }
+// lesson04
+
+let getAllServicePrices = function () {
+    return +servicePrice1 + +servicePrice2;
+
+};
+let allServicePrices = getAllServicePrices();
+console.log(allServicePrices);
+
+function getFullPrise(screensPrice, allServicePrices) {
+    return +screensPrice + +allServicePrices;
+}
+fullPrice = getFullPrise(screensPrice, allServicePrices);
+console.log(fullPrice);
