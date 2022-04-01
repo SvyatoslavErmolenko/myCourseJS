@@ -42,13 +42,13 @@ console.log(Math.ceil(servicePercentPrice));
 // конструкцию условий 
 switch (true) {
     case fullPrice >= 30000:
-        fullPrice === 30000 ? console.log("Не достаточно до скидки `( ") : console.log("Даем скидку в 10%");
+        fullPrice === 30000 ? console.log("Даем скидку в 5%") : console.log("Даем скидку в 10%");
         break
     case 15000 <= fullPrice && fullPrice <= 30000:
-        fullPrice === 15000 ? console.log("Не достаточно до скидки `( ") : console.log("Даем скидку в 5%");
+        fullPrice === 15000 ? console.log("Скидка не предусмотрена") : console.log("Даем скидку в 5%");
         break
     case 15000 >= fullPrice && fullPrice >= 0:
-        fullPrice === 0 ? console.log("Ну тут совсем мало денюшек ((( ") : console.log("Скидка не предусмотрена");
+        fullPrice === 0 ? console.log("Скидка не предусмотрена") : console.log("Скидка не предусмотрена");
         break
     default:
         console.log("Что то пошло не так");
