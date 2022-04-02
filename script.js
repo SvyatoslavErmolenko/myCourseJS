@@ -45,24 +45,29 @@ const getRollbackMessage = function (price) {
 };
 
 // lesson04
+
 // функция указывающую тип операнда
 const showTypeof = function (variable) {
     console.log(variable, typeof variable);
 };
+
 // функция возвращает сумму всех дополнительных услуг
 let getAllServicePrices = function () {
     return servicePrice1 + servicePrice2;
 
 };
+
 // функция возвращает сумму стоимости верстки и стоимости дополнительных услуг
 function getFullPrise(screensPrice, allServicePrices) {
     return screensPrice + allServicePrices;
 };
+
 // функция возвращает title меняя его таким образом: первый символ с большой буквы, остальные с маленькой с учетом пустых символов 
 let getTitle = function (str) {
     return str.trim()[0].toUpperCase() + str.trim().substr(1).toLowerCase(1);
 
 };
+
 // функция возвращает итоговую стоимость за вычетом процента отката
 let getServicePercentPrices = function () {
     return fullPrice - servicePercentPrice;
