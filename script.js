@@ -89,6 +89,8 @@ const appData = {
 
     },
 
+    // выводит все свойства и методы объекта appData
+
     logger: function () {
         for (let key in appData) {
             if (typeof (appData[key]) === 'object') {
