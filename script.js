@@ -95,11 +95,11 @@ const appData = {
         for (let key in appData) {
             if (typeof (appData[key]) === 'object') {
                 for (let i in appData[key]) {
-                    console.log("Свойство ${i} имеет значение ${appData[key][i]}");
+                    console.log(`Свойство ${i} имеет значение ${appData[key][i]}`);
                 }
             }
             else {
-                console.log("Свойство ${key} имеет значение ${appData[key]}");
+                console.log(`Свойство ${key} имеет значение ${appData[key]}`);
             }
         }
     },
