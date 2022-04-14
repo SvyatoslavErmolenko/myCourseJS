@@ -1,29 +1,71 @@
 'use strict';
 
-// lesson07
+// lesson08
 
 const appData = {
     title: '',
-    screens: '',
+    screens: [],
     screensPrice: 0,
     adaptive: true,
-    service1: '',
-    service2: '',
+    services: {},
     rollback: 32,
     fullPrice: 0,
     servicePercentPrice: 0,
     allServicePrices: 0,
+
+    // запуск методов
+
+    start: function () {
+        appData.asking();
+        appData.addPrices();
+        appData.getFullPrise();
+        appData.getTitle();
+        appData.getServicePercentPrices();
+        appData.logger();
+    },
+
     asking: function () {
-        appData.title = prompt("Как называется ваш проект?", "Напишите название вашего проекта!");
-        appData.screens = prompt("Какие типы экранов нужно разработать?", "Простой, сложный или интерактивный!");
-
         do {
-            appData.screensPrice = +prompt("Сколько будет стоить данная работа?", "Укажите цену!");
+            appData.title = prompt("Как называется ваш проект?", "Калькулятор верстки!");
         }
-        while (!appData.isNumber(appData.screensPrice));   //ввод только числа(защита)
+        while (appData.isNumber(appData.title));
+        for (let i = 0; i < 2; i++) {
+            let name = prompt("Какие типы экранов нужно разработать?", "Простой, сложный или интерактивный!");
+            let price = 0;
 
+            do {
+                price = +prompt("Сколько будет стоить данная работа?", "Укажите цену!");
+            }
+            while (!appData.isNumber(price));
+
+            appData.screens.push({ id: i, name: name, price: price });
+        }
+
+
+        for (let i = 0; i < 2; i++) {//
+            let name = prompt("Какой дополнительный тип услуги нужен?", "Назваие!");
+            let price = 0;
+
+
+            do {
+                price = prompt("Сколько это будет стоить?", "Укажите цену!");
+            }
+            while (!appData.isNumber(price));
+
+            appData.services[name] = +price;
+        }
 
         appData.adaptive = confirm("Нужен ли адаптив на сайте?");
+    },
+
+    addPrices: function () {
+        for (let screen of appData.screens) {
+            appData.screensPrice += +screen.price;
+        }
+
+        for (let key in appData.services) {
+            appData.allServicePrices += appData.services[key];
+        }
     },
 
     // ввод только числа(защита)
@@ -32,46 +74,24 @@ const appData = {
         return !isNaN(parseFloat(num)) && isFinite(num);
     },
 
-    // функция название и стоимость дополнительных услуг
-
-    getAllServicePrices: function () {
-        let sum = 0;
-        let price = 0;
-        for (let i = 0; i < 2; i++) {
-            if (i === 0) {
-                appData.service1 = prompt("Какой дополнительный тип услуги нужен?", "Назваие!");
-            } else if (i === 1) {
-                appData.service2 = prompt("Какой дополнительный тип услуги нужен?", "Назваие!");
-            }
-
-            do {
-                sum = prompt("Сколько это будет стоить?", "Укажите цену!");
-            }
-            while (!appData.isNumber(sum));
-
-            price += +sum;
-        }
-        return price;
-
-    },
 
     // функция возвращает сумму стоимости верстки и стоимости дополнительных услуг
 
     getFullPrise: function () {
-        return appData.screensPrice + appData.allServicePrices;
+        appData.fullPrice = appData.screensPrice + appData.allServicePrices;
     },
 
     // функция возвращает title меняя его таким образом: первый символ с большой буквы, остальные с маленькой с учетом пустых символов
 
-    getTitle: function (str) {
-        return str.trim()[0].toUpperCase() + str.trim().substr(1).toLowerCase(1);
+    getTitle: function () {
+        appData.title = appData.title.trim()[0].toUpperCase() + appData.title.trim().substr(1).toLowerCase(1);
 
     },
 
     // функция возвращает итоговую стоимость за вычетом процента отката
 
     getServicePercentPrices: function () {
-        return Math.ceil(appData.fullPrice - (appData.fullPrice * (appData.rollback / 100)));
+        appData.servicePercentPrice = Math.ceil(appData.fullPrice - (appData.fullPrice * (appData.rollback / 100)));
     },
 
     // функция условий скидок
@@ -92,6 +112,12 @@ const appData = {
     // выводит все свойства и методы объекта appData
 
     logger: function () {
+        console.log(appData.fullPrice);
+        console.log(appData.servicePercentPrice);
+        console.log(appData.screens);
+    },
+
+    /*logger: function () {
         for (let key in appData) {
             if (typeof (appData[key]) === 'object') {
                 for (let i in appData[key]) {
@@ -103,17 +129,8 @@ const appData = {
             }
         }
     },
+*/
 
-    // переопределение переменных в функции
-
-    start: function () {
-        appData.asking();
-        appData.allServicePrices = appData.getAllServicePrices();
-        appData.fullPrice = appData.getFullPrise();
-        appData.title = appData.getTitle;
-        appData.servicePercentPrice = appData.getServicePercentPrices();
-        appData.logger();
-    },
 
 };
 
